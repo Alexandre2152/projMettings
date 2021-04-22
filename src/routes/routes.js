@@ -8,6 +8,7 @@ import Adicionar from '../components/pages/adicionar'
 import Exibir from '../components/pages/exibir'
 import Editar from '../components/pages/editar'
 
+
 const Routes = () => (
     <BrowserRouter>
         <Switch>

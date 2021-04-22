@@ -1,15 +1,8 @@
 import React, { Component } from 'react';
 
-import api from '../../api/api'
+import api from './api'
 
-
-// export default () => 
-// <>
-//     <Listar></Listar>
-    
-// </>
-
-class Exibir extends Component {
+class Listar extends Component {
     state = {
         titulos: []
     }
@@ -39,4 +32,4 @@ class Exibir extends Component {
     }
 }
 
-export default Exibir
+export default Listar
