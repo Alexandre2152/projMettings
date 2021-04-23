@@ -1,35 +1,65 @@
 import React, { Component } from 'react';
 import './style.css'
 import { Container, Row, Col, Alert, Button, Table } from 'react-bootstrap';
+import { Link } from 'react-router-dom'
+import TituloTabRow from '../tituloTabRow'
 
 import api from '../../api/api'
 
 class Index extends Component{
 
-    state = {
-        titulos: []
+    constructor(props){
+        super(props)
+        // this.deleteReuniao = this.deleteReuniao.bin(this)
+
+        this.state = {
+            titulos: []
+        }
     }
 
     async componentDidMount() {
         const response = await api.get('meetings')
-        //console.log(response.data)
+        console.log(response.data)
         this.setState({titulos: response.data})
     }
 
+    DataTable(){
+        return this.state.titulos.map((res, i) => {
+            return <TituloTabRow obj={res} key={i} />
+        })
+    }
+
+    // deleteReuniao(){
+    //     api.delete('meetings'+ this.props.obj._id)
+    //     .then((res) => {
+    //         console.log('Reunião deletada com sucesso!')
+    //     }).catch((err) => {
+    //         console.log(err)
+    //     })
+    // }
+
+    
+
+   
+
+    // async remove(titulos){
+    //     const response = await api.delete('meetings')
+    // }
+
     render(){
-
-        const {titulos} = this.state
-
         return(
-
-            <Container fluid>
+        <Container fluid>
         <Alert variant='primary' className="title">
             <h1>METTING</h1>
         </Alert>
 
         <Row>
             <Col>
-                <Button variant="primary">ADICIONAR</Button>
+                <Link to="/adicionar">
+                    <Button variant="primary">
+                        ADICIONAR
+                    </Button>
+                </Link>
             </Col>
         </Row>
 
@@ -39,28 +69,16 @@ class Index extends Component{
         <Table striped bordered hover>
         <thead>
             <tr>
-                <th className="id">#</th>
                 <th colSpan='2'>Reuniões</th>
-                <th className="v_e_e">Ver</th>
-                <th className="v_e_e">Editar</th>
-                <th className="v_e_e">Excluir</th>
             </tr>
         </thead>
         <tbody>
-        {titulos.map(titulo => (
-            <tr>
-                <td>1</td>
-                <td colSpan='2' key={titulos._id} >{titulo.titulo}</td>
-                <td>I1</td>
-                <td>I2</td>
-                <td>I3</td>
-            </tr>
-            ))}
+            <td colSpan='2'>
+                {this.DataTable()}
+            </td>
         </tbody>
         </Table>
-
     </Container>
-
         )
     }
 }
