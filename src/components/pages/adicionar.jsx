@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './style.css'
 import { Container, Alert, Button, Form } from 'react-bootstrap';
+import { Link } from 'react-router-dom'
 
 import api from '../../api/api'
 
@@ -49,6 +50,9 @@ export default class Adicionar extends Component{
             })
 
             this.setState({ titulo: '', Foto: '', colaboradores: ''})
+            
+            //Redirecionar para a página principal
+            this.props.history.push('/')
     }
 
     render(){
@@ -81,9 +85,16 @@ export default class Adicionar extends Component{
                         <Form.Control as="textarea" value={this.state.colaboradores} rows={3} placeholder="Nome dos colaboradores" onChange={this.onChangeReuniaoColaboradores} />
                     </Form.Group>
                     
-                    <Button variant="primary" type="submit">
-                        Submit
+                    <Button variant="primary" type="submit" className="btnEnviar">
+                        Adicionar
                     </Button>
+
+                    <Link to="/">
+                       <Button variant="primary" type="submit" className="btnVoltar">
+                        Voltar
+                    </Button> 
+                    </Link>
+                    
                     
                 </form>
 

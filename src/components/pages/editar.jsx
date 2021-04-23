@@ -15,18 +15,17 @@ export default class Editar extends Component {
         this.onSubmit = this.onSubmit.bind(this)
 
         this.state = {
-            titulo: '',
+            titulo: this.titulos,
             Foto: '',
             colaboradores: ''
         }}
-    
-
 
     componentDidMount() {
-    api.get('meetings/'+ this.props.match.params.id)
+    const response =api.get('meetings/'+ this.props.match.params.id)
     .then(res => {
         this.setState({
             titulo: this.state.titulo,
+            titulos: response.titulo,
             Foto: this.state.Foto,
             colaboradores: this.state.colaboradores
         })
@@ -83,6 +82,8 @@ render(){
             </Alert>
 
                 <form onSubmit={this.onSubmit}>
+
+                
                     <Form.Group controlId="titulo">
                         <Form.Label>TITULO</Form.Label>
                         <Form.Control type="text" value={this.state.titulo} onChange={this.onChangeReuniaoTitulo} />
@@ -101,7 +102,7 @@ render(){
                     <Button variant="primary" size="lg" block="block" type="submit">
                         Atualizar
                     </Button>
-                    
+
                 </form>
 
             </Container>

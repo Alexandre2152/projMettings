@@ -10,7 +10,6 @@ class Index extends Component{
 
     constructor(props){
         super(props)
-        // this.deleteReuniao = this.deleteReuniao.bin(this)
 
         this.state = {
             titulos: []
@@ -29,26 +28,13 @@ class Index extends Component{
         })
     }
 
-    // deleteReuniao(){
-    //     api.delete('meetings'+ this.props.obj._id)
-    //     .then((res) => {
-    //         console.log('Reunião deletada com sucesso!')
-    //     }).catch((err) => {
-    //         console.log(err)
-    //     })
-    // }
-
-    
-
-   
-
-    // async remove(titulos){
-    //     const response = await api.delete('meetings')
-    // }
-
     render(){
         return(
-        <Container fluid>
+
+            <Container fluid>
+                <>
+
+                   <div className="table-wrapper">
         <Alert variant='primary' className="title">
             <h1>METTING</h1>
         </Alert>
@@ -69,16 +55,22 @@ class Index extends Component{
         <Table striped bordered hover>
         <thead>
             <tr>
-                <th colSpan='2'>Reuniões</th>
+                <th>Reuniões</th>
+                <th>Fotos</th>
+                <th>Colaboradores</th>
+                <th>Data/Hora</th>
+                <th>Ação</th>
             </tr>
         </thead>
         <tbody>
-            <td colSpan='2'>
                 {this.DataTable()}
-            </td>
         </tbody>
         </Table>
-    </Container>
+        </div> 
+
+                </>
+            </Container>
+            
         )
     }
 }

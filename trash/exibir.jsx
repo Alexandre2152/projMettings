@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './style.css'
 import { Container, Row, Col, Alert, Button, Table, Form } from 'react-bootstrap';
 
-import api from '../../api/api'
+import api from '../src/api/api'
 
 class Exibir extends Component {
     state = {
